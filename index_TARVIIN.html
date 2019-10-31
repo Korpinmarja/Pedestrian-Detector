@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>AI Passerby Analyzer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/layout.css" type="text/css">
+  <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="scripts/logic.js"></script>
+  <script>
+    $(function () {
+      $("#accordion").accordion({
+        collapsible: true,
+        heightStyle: "content",
+        active: false
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="wrapper row1">
+    <header id="header" class="clear">
+      <div id="hgroup">
+        <h1><a href="index.html">AI Passerby Analyzer</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">List of Cameras</a></li>
+          <!-- 
+          <li ><a href="poseestim.html">Image Pose Estimation</a></li>
+          <li class="last"><a href="poseestim2.html">Video Pose Estimation</a></li>
+          -->
+        </ul>
+      </nav>
+    </header>
+  </div>
+  <!-- content -->
+
+  <div class="wrapper row2">
+    <div id="container" class="clear">
+      <!-- content body -->
+
+      <!-- Search and Reset  -->
+      <section id="cameradata">
+        <p id="searchBar">
+          <label for="from">From: </label>
+          <input type="text" id="from" name="from" autocomplete="off" readonly="readonly">
+          <label for="to"> To: </label>
+          <input type="text" id="to" name="to" autocomplete="off" readonly="readonly">
+          <input type="submit" id="searchBtn" value="Search">
+          <input type="submit" id="resetBtn" value="Reset">
+        </p>
+        <br>
+        <p id="displayBar"></p>
+        <br>
+      </section>
+
+      <!-- Image -->
+      <section id="slider">
+        <div id="accordion">
+          <h3>Image: click to expand/collapse</h3>
+          <div><a href="#"><img src="images/demo/960x360.gif" alt="" id="cameraimg"></a></div>
+        </div>
+      </section>
+
+      <!-- Camera infos -->
+      <section id="camerainfo">
+        <p id="cameraList">
+          <label for="Select">Camera: </label><select id="select"></select>
+        </p>
+        <br>
+        <p id="displayDetails"></p>
+        <br>
+      </section>
+
+      <!-- / content body -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="wrapper row3">
+    <footer id="footer" class="clear">
+      <p class="fl_left">LAMK AI Team &copy; 2019 - All Rights Reserved - <a
+          href="https://azure.microsoft.com/en-us/services/storage/">Hosted with Azure Storage</a></p>
+    </footer>
+  </div>
+
+</body>
+
+</html>
