@@ -10,6 +10,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Calender stuff -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/fi.js"></script>
+    <link rel="stylesheet" href="styles/pignose.calendar.css">
+    <script src="script/pignose.calendar.js"></script>
+
+    <!-- Styles to css file-->
     <style>
         .fakeimg {
             height: 200px;
@@ -19,7 +25,8 @@
 </head>
 
 <body>
-    <!-- TODO Center the navbar and make this the "project selector" -->
+    <!-- Project selector navbar -->
+    <!-- TODO Center the navbar and make this the "project selector" + highlight the selected tab -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -39,25 +46,168 @@
         </div>
     </nav>
 
-    <div class="container" style="margin-top:30px">
-        <div class="col-sm-8">
-            <!-- TODO Picture goes here, check if colum is right size -->
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Dec 7, 2017</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text..</p>
+    <!-- TODO research how to "center" the website -->
+    <!-- Picture -->
+    <div class="container col-sm-8" style="margin:18%">
+        <!-- TODO Picture here, check if colum is right size -->
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Dec 7, 2017</h5>
+        <div class="fakeimg">Fake Image</div>
+        <p>Some text..</p>
+    </div>
 
-            <br>
+    <!-- What class row means? -->
+    <div class="row">
+        <!-- Camera info -->
+        <!-- TODO dropdown button for cameras + how to transform this to hamburger -->
+        <div class="col-sm-4" style="text-align:center; margin:50px">
+            <h5>Camera info</h5>
 
-            <h2>TITLE HEADING</h2>
-            <h5>Title description, Sep 2, 2017</h5>
-            <div class="fakeimg">Fake Image</div>
-            <p>Some text..</p>
+            <!-- Camera selector -->
+            <!-- TODO check how to get this button nicely beside the title -->
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Select camera
+                </button>
+                <!-- TODO Give ID to this and fetch the info from script codes-->
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <a class="dropdown-item" href="#">Link 3</a>
+                </div>
+            </div>
+
+            <div style="background-color:steelblue;">
+                Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
+                non pulvinar lorem felis pretium, metus venenatis dictum viverra,
+                dui metus finibus enim, ac rhoncus sem lorem vitae mauris
+            </div>
         </div>
+
+        <!-- Cathered data all time -->
+        <!-- TODO Give ID to this and fetch the information from script codes -->
+        <div class="col-sm-4" style="text-align:center; margin:0px">
+            <h5>Cathered data</h5>
+            <div style="background-color:steelblue; padding:10%">
+                Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
+                non pulvinar lorem felis pretium, metus venenatis dictum viverra,
+                dui metus finibus enim, ac rhoncus sem lorem vitae mauris
+            </div>
         </div>
     </div>
 
-    <div class="jumbotron text-center" style="margin-bottom:0">
+    <!-- Cathered data -->
+    <!-- TODO Give ID to this and fetch the information from script codes -->
+    <div class="container col-sm-4" style="margin:0px">
+        <h5>Cathered data</h5>
+        <div style="background-color:steelblue; padding:10%">
+            Fake Image lorem ipsum
+        </div>
+    </div>
+
+    <!-- Calender, not working atm -->
+    <div class="calender">
+        <script>
+            $('.calender').pignoseCalender();
+
+            $('.calender').pignoseCalender({
+                // en, ko, fr, ch, de, jp, pt, fr
+                lang: 'fi',
+
+                // You can change auto initialized date at first.
+                date: moment(),
+
+                // light, dark
+                theme: 'dark',
+
+                // date format
+                format: 'YYYY-MM-DD',
+
+                // CSS class array
+                classOnDays: [],
+
+                // array of enabled dates
+                enabledDates: [],
+
+                // disabled dates
+                disabledDates: [],
+
+                // You can disable by using a weekday number array (This is a sequential number start from 0 [sunday]).
+                disabledWeekdays: [],
+
+                // This option is advanced way to using disable settings, You can give multiple disabled range by double array date string by formatted to 'YYYY-MM-DD'.
+                disabledRanges: [],
+
+                // Set and array of events to pin on calendar.
+                // Each event is an object that must contain a date string formatted to 'YYYY-MM-DD' and class key that belong to classOnEvents dictionary indicating its color on calendar.
+                // Events with not color class suitable are all pin with  #5c6270.
+                // Issues may arise when the number of color class increase, this could break the calendar cell.
+                schedules: [],
+
+                // Set a dictionary with class 'key' and color code 'value' used for pin events class by date.
+                scheduleOptions: {
+                    colors: {}
+                },
+
+                // Your first day of week (0: Sunday ~ 6: Saturday).
+                week: 1,
+
+                // If you set true this option, You can use multiple range picker by one click on your Calendar.
+                pickWeeks: false,
+
+                //  You can turn on/off initialized date by this option.
+                initialize: true,
+
+                // enable multiple date selection
+                multiple: false,
+
+                // use toggle in the calendar
+                toggle: false,
+
+                // shows buttons
+                buttons: false,
+
+                // reverse mode
+                reverse: false,
+
+                // display calendar as modal
+                modal: false,
+
+                // add button controller for confirm by user
+                buttons: false,
+
+                // minimum disable date range by 'YYYY-MM-DD' formatted string
+                minDate: null,
+
+                // maximum disable date range by 'YYYY-MM-DD' formatted string
+                maxDate: null,
+
+                // called when you select a date on calendar (date click).
+                select: functon(){},
+
+                // If you set true this option, You can pass the check of disabled dates when multiple mode enabled.
+                selectOver: false,
+
+                // called when you apply a date on calendar. (OK button click).
+                apply: functon(){},
+
+                // called when you apply a date on calendar. (OK button click).
+                click: null
+                });
+        </script>
+    </div>
+
+    <!-- Introduction -->
+    <div class="container col-sm-8" style="margin:50px">
+        <h5>Info about the project</h5>
+        <div>
+            Some text..
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- TODO Check how to make this stick bottom the page -->
+    <div class="text-center " style="background-color:aquamarine">
         <p>Footer</p>
     </div>
 
