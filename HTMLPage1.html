@@ -13,7 +13,7 @@
     <!-- Calender stuff -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/fi.js"></script>
     <link rel="stylesheet" href="styles/pignose.calendar.css">
-    <script src="script/pignose.calendar.js"></script>
+    <script src="script/pignose.calendar.full.js"></script>
 
     <!-- Styles to css file-->
     <style>
@@ -108,94 +108,33 @@
     </div>
 
     <!-- Calender, not working atm -->
-    <div class="calender">
+    <div class="calendar">
         <script>
-            $('.calender').pignoseCalender();
+            $('.calendar').pignoseCalendar({
+                date: moment,
+                page: function (info, context) {
+                    /**
+                     * @params context PignoseCalendarPageInfo
+                     * @params context PignoseCalendarContext
+                     * @returns void
+                     */
 
-            $('.calender').pignoseCalender({
-                // en, ko, fr, ch, de, jp, pt, fr
-                lang: 'fi',
+                    // This is clicked arrow button element.
+                    var $this = $(this);
 
-                // You can change auto initialized date at first.
-                date: moment(),
+                    // `info` parameter gives useful information of current date.
+                    var type = info.type; // it will be one of `next`, `prev`, `unkown`.
+                    var year = info.year; // current year (number type), ex: 2017
+                    var month = info.month; // current month (number type), ex: 6
+                    var day = info.day; // current day (number type), ex: 22
 
-                // light, dark
-                theme: 'dark',
+                    // You can get target element in `context` variable.
+                    var $element = context.element;
 
-                // date format
-                format: 'YYYY-MM-DD',
-
-                // CSS class array
-                classOnDays: [],
-
-                // array of enabled dates
-                enabledDates: [],
-
-                // disabled dates
-                disabledDates: [],
-
-                // You can disable by using a weekday number array (This is a sequential number start from 0 [sunday]).
-                disabledWeekdays: [],
-
-                // This option is advanced way to using disable settings, You can give multiple disabled range by double array date string by formatted to 'YYYY-MM-DD'.
-                disabledRanges: [],
-
-                // Set and array of events to pin on calendar.
-                // Each event is an object that must contain a date string formatted to 'YYYY-MM-DD' and class key that belong to classOnEvents dictionary indicating its color on calendar.
-                // Events with not color class suitable are all pin with  #5c6270.
-                // Issues may arise when the number of color class increase, this could break the calendar cell.
-                schedules: [],
-
-                // Set a dictionary with class 'key' and color code 'value' used for pin events class by date.
-                scheduleOptions: {
-                    colors: {}
-                },
-
-                // Your first day of week (0: Sunday ~ 6: Saturday).
-                week: 1,
-
-                // If you set true this option, You can use multiple range picker by one click on your Calendar.
-                pickWeeks: false,
-
-                //  You can turn on/off initialized date by this option.
-                initialize: true,
-
-                // enable multiple date selection
-                multiple: false,
-
-                // use toggle in the calendar
-                toggle: false,
-
-                // shows buttons
-                buttons: false,
-
-                // reverse mode
-                reverse: false,
-
-                // display calendar as modal
-                modal: false,
-
-                // add button controller for confirm by user
-                buttons: false,
-
-                // minimum disable date range by 'YYYY-MM-DD' formatted string
-                minDate: null,
-
-                // maximum disable date range by 'YYYY-MM-DD' formatted string
-                maxDate: null,
-
-                // called when you select a date on calendar (date click).
-                select: functon(){},
-
-                // If you set true this option, You can pass the check of disabled dates when multiple mode enabled.
-                selectOver: false,
-
-                // called when you apply a date on calendar. (OK button click).
-                apply: functon(){},
-
-                // called when you apply a date on calendar. (OK button click).
-                click: null
-                });
+                    // You can also get calendar element, It is calendar view DOM.
+                    var $calendar = context.calendar;
+                }
+            });
         </script>
     </div>
 
@@ -206,7 +145,6 @@
             Some text..
         </div>
     </div>
-    -->
 
     <!-- Footer -->
     <!-- TODO Check how to make this stick bottom the page -->
