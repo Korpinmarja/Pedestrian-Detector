@@ -459,7 +459,7 @@ define('component/models',[], function () {
     version: '1.4.31',
     preference: {
       supports: {
-        themes: ['light', 'dark', 'blue']
+        themes: ['light', 'dark', 'custom']
       }
     }
   };
@@ -608,7 +608,7 @@ define('component/classNames',['../component/helper'], function (helper) {
 //# sourceMappingURL=classNames.js.map
 ;
 
-
+// Changed the ca to  finnish language
 define('configures/i18n',[], function () {
   return {
     defaultLanguage: 'en',
@@ -632,7 +632,7 @@ define('configures/i18n',[], function () {
       uk: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
       ru: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
       ka: ['კვ', 'ორ', 'სმ', 'ოთ', 'ხთ', 'პრ', 'შბ'],
-      ca: ['Dg', 'Dl', 'Dm', 'Dc', 'Dj', 'Dv', 'Ds']
+      ca: ['Su', 'Ma', 'Ti', 'Ke', 'To', 'Pe', 'La']
     },
     monthsLong: {
       ar: ['يناير', 'فبراير', 'مارس', 'إبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
@@ -653,7 +653,7 @@ define('configures/i18n',[], function () {
       uk: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
       ru: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
       ka: ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი', 'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი'],
-      ca: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Setembre', 'Octubre', 'Novembre', 'Desembre']
+      ca: ['Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Toukokuu', 'Kesäkuu', 'Heinäkuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu']
     },
     months: {
       ar: ['يناير', 'فبراير', 'مارس', 'إبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
@@ -674,7 +674,7 @@ define('configures/i18n',[], function () {
       uk: ['Січ', 'Лют', 'Бер', 'Квіт', 'Трав', 'Черв', 'Лип', 'Серп', 'Вер', 'Жовт', 'Лист', 'Груд'],
       ru: ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'],
       ka: ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'],
-      ca: ['Gen', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Des']
+      ca: ['Tammi', 'Helmi', 'Maalis', 'Huhti', 'Touko', 'Kesä', 'Heinä', 'Elo', 'Syys', 'Loka', 'Marras', 'Joulu']
     },
     controls: {
       ar: {
@@ -750,8 +750,8 @@ define('configures/i18n',[], function () {
         cancel: 'გაუქმება'
       },
       ca: {
-        ok: 'Confirmar',
-        cancel: 'Cancel·lar'
+        ok: 'OK',
+        cancel: 'Peruuta'
       }
     }
   };

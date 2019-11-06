@@ -11,10 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Calender stuff -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/fi.js"></script>
-    <link rel="stylesheet" href="styles/pignose.calendar.css">
-    <script src="script/pignose.calendar.full.js"></script>
-
+    <link rel="stylesheet" href="styles/pignose.calendar.css"> 
+    <script src="script/pignose.calendar.full.js"></script> <!-- THIS MAKE PIGNOSE CALENDAR WORKING DO NOT TOUCH! -->
     <!-- Styles to css file-->
     <style>
         .fakeimg {
@@ -109,33 +107,7 @@
 
     <!-- Calender, not working atm -->
     <div class="calendar">
-        <script>
-            $('.calendar').pignoseCalendar({
-                date: moment,
-                page: function (info, context) {
-                    /**
-                     * @params context PignoseCalendarPageInfo
-                     * @params context PignoseCalendarContext
-                     * @returns void
-                     */
-
-                    // This is clicked arrow button element.
-                    var $this = $(this);
-
-                    // `info` parameter gives useful information of current date.
-                    var type = info.type; // it will be one of `next`, `prev`, `unkown`.
-                    var year = info.year; // current year (number type), ex: 2017
-                    var month = info.month; // current month (number type), ex: 6
-                    var day = info.day; // current day (number type), ex: 22
-
-                    // You can get target element in `context` variable.
-                    var $element = context.element;
-
-                    // You can also get calendar element, It is calendar view DOM.
-                    var $calendar = context.calendar;
-                }
-            });
-        </script>
+        <script src="script/calendar.js"></script>
     </div>
 
     <!-- Introduction -->
