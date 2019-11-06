@@ -1,9 +1,11 @@
 $(function () {
     $('.calendar').pignoseCalendar({
-        multiple: true,
+        multiple: true, // enables the range selection
         theme: 'custom', // light, dark, custom
-        week: 1,
+        week: 1, // first day of the week, 0 = sunday - 6 = saturday
         format: 'YYYY-MM-DD',
+
+        // Custom language back
         weeks: [
             'Su',
             'Ma',

@@ -361,7 +361,11 @@
   background-color: #31bbbf;
 }
 
-/* Customised code */
+/* 
+    Custom code
+    Changed the name custom
+    Changed colors
+*/
 .pignose-calendar.pignose-calendar-custom {
   background-color: #fafafa;
 }
@@ -416,7 +420,7 @@
 
 
 
-/* original code
+/* original blue theme code
 
     .pignose-calendar.pignose-calendar-blue {
   background-color: #fafafa;
