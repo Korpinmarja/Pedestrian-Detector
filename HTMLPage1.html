@@ -48,7 +48,6 @@
     </nav>
 
     <!-- TODO research how to "center" the whole website -->
-
     <!-- Picture -->
     <div class="container col-sm-8" style="margin:18%">
         <!-- TODO Picture goes here, check if colum is right size -->
@@ -110,7 +109,11 @@
     <!-- Calendar -->
     <!-- TODO How to get days out off calendar, so getAPI will got the info -->
     <div class="calendar">
-        <script src="script/calendar.js"></script>
+        <input type="text" id="text-calendar" class="calendar" />
+        <br />
+        <div class="col-sm-8">
+            <script src="script/calendar.js"></script>
+        </div>
     </div>
 
     <!-- Introduction -->
@@ -122,11 +125,39 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <!-- TODO Check how to make this stick bottom the page -->
+    <!-- Footer
     <div class="text-center " style="background-color:aquamarine">
         <p>Footer</p>
     </div>
+    -->
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <!-- Footer Text -->
+        <div class="container-fluid text-center text-md-center">
+            <!-- Grid column -->
+            <div class="col-sm-8">
+                <!-- Content -->
+                <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
+                <p>
+                    Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
+                    non pulvinar lorem felis pretium, metus venenatis dictum viverra,
+                    dui metus finibus enim, ac rhoncus sem lorem vitae mauris
+                </p>
+            </div>
+        </div>
+
+    <!-- Footer Text -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3" style="background-color:aquamarine">
+            © 2018 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
 </body>
 </html>

@@ -1,11 +1,13 @@
 $(function () {
     $('.calendar').pignoseCalendar({
+        maxDate: moment(), //sets that user can't select future days
+        minDate: '2019-10-12', //sets earlies day user can select
         multiple: true, // enables the range selection
         theme: 'custom', // light, dark, custom
         week: 1, // first day of the week, 0 = sunday - 6 = saturday
-        format: 'YYYY-MM-DD',
-
+        // buttons: true,
         // Custom language back
+        // This works
         weeks: [
             'Su',
             'Ma',
@@ -15,6 +17,7 @@ $(function () {
             'Pe',
             'La'
         ],
+        // This doesn't work WHY!?!?!?!?
         monthLong: [
             'Tammikuu',
             'Helmikuu',
@@ -29,6 +32,7 @@ $(function () {
             'Marraskuu',
             'Joulukuu'
         ],
+        // Not sure if this works...
         months: [
             'Tammi',
             'Helmi',
