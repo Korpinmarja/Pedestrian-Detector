@@ -1,0 +1,21 @@
+
+/*Navbar*/
+.navbar {
+    background-color: #009688;
+}
+.navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+.nav-item {
+    display: inline;
+    /* borders from both sides */
+}
+.nav-link {
+    display: inline-block;
+    padding: 15px;
+    float: none;
+    color: white;
+}

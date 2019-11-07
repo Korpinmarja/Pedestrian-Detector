@@ -6,8 +6,8 @@ $(function () {
         theme: 'custom', // light, dark, custom
         week: 1, // first day of the week, 0 = sunday - 6 = saturday
         // buttons: true,
+
         // Custom language back
-        // This works
         weeks: [
             'Su',
             'Ma',
@@ -17,8 +17,7 @@ $(function () {
             'Pe',
             'La'
         ],
-        // This doesn't work WHY!?!?!?!?
-        monthLong: [
+        monthsLong: [
             'Tammikuu',
             'Helmikuu',
             'Maaliskuu',
@@ -32,7 +31,6 @@ $(function () {
             'Marraskuu',
             'Joulukuu'
         ],
-        // Not sure if this works...
         months: [
             'Tammi',
             'Helmi',
