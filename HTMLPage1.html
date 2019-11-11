@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- TODO Verify what the title should be -->
+    <!-- TODO Verify what the title should be / I can choose it for now -->
     <title>Ai Passerby Detector/Pedestrian Detector</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,14 +12,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Calender stuff -->
-    <link rel="stylesheet" href="styles/pignose.calendar.css"> 
-    <script src="script/pignose.calendar.full.js"></script>
+    <link rel="stylesheet" href="calendar/pignose.calendar.css"> 
+    <script src="calendar/pignose.calendar.full.js"></script>
     <!-- TODO Styles to css file-->
 </head>
 
-<body>
+<body style="background-color:lightgray">
+    <!-- Backround color doesn't work in CSS ?? -->
+
     <!-- Project selector navbar -->
-    <!-- TODO Center the navbar and make this the "project selector" + highlight the selected tab -->
+    <!-- TODO Center the navbar and make this the "project selector"
+        + highlight/underline the selected tab -->
     <nav class="navbar navbar-expand-sm">
         <!-- Makes "hamburger" button for smaller screens -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -40,10 +43,11 @@
             </ul>
         </div>
     </nav>
+    <br />
 
     <!-- Title -->
     <!-- TODO Right title with right project -->
-    <div style="text-align:center">
+    <div class="projectheader">
         <h2>Pedestrian detector</h2>
     </div>
 
@@ -53,7 +57,7 @@
         <!-- TODO Picture goes here, check if colum is right size -->
         <h5>Image</h5>
         <div>
-        <a href="#"><img src="images/demopic.jpg" alt="" id="cameraimg" class="img-fluid d-block"></a>
+            <a href="#"><img src="images/demopic.jpg" alt="" id="cameraimg" class="img-fluid d-block"></a>
         </div>
     </div>
 
@@ -61,7 +65,7 @@
     <div class="row">
         <!-- Camera info -->
         <!-- TODO dropdown button for cameras + how to transform this to hamburger -->
-        <div class="col-sm-4" style="text-align:center; margin:50px">
+        <div class="camerainfo col-sm-4">
             <h5>Camera info</h5>
 
             <!-- Camera selector -->
@@ -78,7 +82,7 @@
                 </div>
             </div>
 
-            <div style="background-color:steelblue;">
+            <div class="infobox">
                 Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
                 non pulvinar lorem felis pretium, metus venenatis dictum viverra,
                 dui metus finibus enim, ac rhoncus sem lorem vitae mauris
@@ -87,9 +91,9 @@
 
         <!-- Cathered data all time -->
         <!-- TODO Give ID to this and fetch the information from script codes -->
-        <div class="col-sm-4" style="text-align:center; margin:0px">
-            <h5>Cathered data</h5>
-            <div style="background-color:steelblue; padding:10%">
+        <div class="container col-sm-4" style="text-align:center; margin:0px">
+            <h5>Cathered data (all time)</h5>
+            <div class="infobox">
                 Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
                 non pulvinar lorem felis pretium, metus venenatis dictum viverra,
                 dui metus finibus enim, ac rhoncus sem lorem vitae mauris
@@ -97,22 +101,24 @@
         </div>
     </div>
 
-    <!-- Cathered data selected days -->
-    <!-- TODO Give ID to this and fetch the information from script codes -->
-    <div class="container col-sm-4" style="margin:0px">
-        <h5>Cathered data</h5>
-        <div style="background-color:steelblue; padding:10%">
-            Fake Image lorem ipsum
+    <div class="row">
+        <!-- Cathered data selected days -->
+        <!-- TODO Give ID to this and fetch the information from script codes -->
+        <div class="container col-sm-4" style="margin:0px">
+            <h5>Cathered data</h5>
+            <div class="infobox">
+                Fake Image lorem ipsum
+            </div>
         </div>
-    </div>
 
-    <!-- Calendar -->
-    <!-- TODO How to get days out off calendar, so getAPI will got the info -->
-    <div class="calendar">
-        <input type="text" id="text-calendar" class="calendar" />
-        <br />
-        <div class="col-sm-8">
-            <script src="script/calendar.js"></script>
+        <!-- Calendar -->
+        <!-- TODO How to get days out off calendar, so getAPI will got the info -->
+        <div class="calendar">
+            <input type="text" id="text-calendar" class="calendar" />
+            <br />
+            <div class="col-sm-8">
+                <script src="calendar/calendar.js"></script>
+            </div>
         </div>
     </div>
 

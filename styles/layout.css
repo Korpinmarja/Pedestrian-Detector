@@ -1,5 +1,10 @@
 
-/*Navbar*/
+/* Body */
+body {
+    font-family: 'Lato';
+    font-size: 12px;
+}
+/* Navbar */
 .navbar {
     background-color: #009688;
 }
@@ -11,11 +16,30 @@
 }
 .nav-item {
     display: inline;
-    /* borders from both sides */
 }
 .nav-link {
     display: inline-block;
     padding: 15px;
     float: none;
     color: white;
+}
+/* project header*/
+.projectheader {
+    text-align: center;
+}
+/*headers*/
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 12px;
+    font-weight: bold;
+}
+/* infobox */
+.infobox {
+    text-align: center;
+    margin: 50px;
+    background-color: white;
+    padding: 5%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #009688;
 }
