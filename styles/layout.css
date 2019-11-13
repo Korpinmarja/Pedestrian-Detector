@@ -4,13 +4,18 @@ body {
     font-family: 'Lato';
     font-size: 12px;
 }
+/* walls */
+.walls {
+    margin-left: 25px;
+    margin-right: 25px;
+}
 /* Navbar */
 .navbar {
     background-color: #009688;
 }
 .navbar-nav {
     float: none;
-    margin: 0 auto;
+    margin: auto;
     display: block;
     text-align: center;
 }
@@ -29,17 +34,30 @@ body {
 }
 /*headers*/
 h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 12px;
+    margin: auto;
+    padding: 8px;
     font-weight: bold;
 }
 /* infobox */
 .infobox {
     text-align: center;
-    margin: 50px;
+    margin: auto;
     background-color: white;
-    padding: 5%;
+    padding: 3%;
     border-style: solid;
-    border-width: 3px;
+    border-width: 4px;
     border-color: #009688;
+    border-radius: 10px;
+}
+/* calendar */
+.calendar {
+    margin: auto;
+    float: right;
+}
+/* Footer */
+.footer {
+    position: absolute;
+    bottom: auto;
+    width: 100%;
+    height: 60px; /* Height of the footer */
 }
