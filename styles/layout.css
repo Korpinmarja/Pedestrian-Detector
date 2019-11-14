@@ -49,11 +49,14 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #009688;
     border-radius: 10px;
 }
-/* calendar */
+.image-text {
+    float:left;
+}
+/* calendar
 .calendar {
     margin: auto;
     float: right;
-}
+}*/
 /* Footer */
 .footer {
     position: absolute;
