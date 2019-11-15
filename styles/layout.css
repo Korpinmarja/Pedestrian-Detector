@@ -4,13 +4,22 @@ body {
     font-family: 'Lato';
     font-size: 12px;
 }
+
 /* walls */
 .walls {
     margin-left: 25px;
     margin-right: 25px;
 }
+
 /* Navbar */
-.navbar {
+.custom-toggler.navbar-toggler {
+    border-color: lightgray;
+    background-color:lightgray;
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30rgba' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33, 33, 33, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-custom {
     background-color: #009688;
 }
 .navbar-nav {
@@ -22,22 +31,31 @@ body {
 .nav-item {
     display: inline;
 }
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    text-decoration: underline; /* add background-color to active links */
+}
 .nav-link {
     display: inline-block;
     padding: 15px;
     float: none;
     color: white;
 }
+
 /* project header*/
 .projectheader {
     text-align: center;
 }
+
 /*headers*/
 h1, h2, h3, h4, h5, h6 {
     margin: auto;
     padding: 8px;
     font-weight: bold;
 }
+
 /* infobox */
 .infobox {
     text-align: center;
@@ -52,11 +70,13 @@ h1, h2, h3, h4, h5, h6 {
 .image-text {
     float:left;
 }
+
 /* calendar
 .calendar {
     margin: auto;
     float: right;
 }*/
+
 /* Footer */
 .footer {
     position: absolute;
