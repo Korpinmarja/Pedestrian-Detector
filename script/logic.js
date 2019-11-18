@@ -9,7 +9,6 @@ $(document).ready(function () {
 
 // call it when camera list is available
 function startDatePicker() {
-
     var d = new Date();
     // check that state exists
     if (!Array.isArray(cameraStartedDate) || 3 !== cameraStartedDate.length) {
@@ -22,30 +21,34 @@ function startDatePicker() {
     $('#from').datepicker('destroy');
     $('#to').datepicker('destroy');
 
-    var dateFormat = "yymmdd",  // DO NOT CHANGE THIS FORMAT, this value corresponds to rowkey within azure table 
-        from = $("#from")
-            .datepicker({
-                dateFormat: 'yymmdd',
-                minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]),  // set this to the first day when app should start
-                maxDate: new Date(d.getFullYear(), d.getMonth(), d.getDate()), // set this to current day so it can't go out of bounds
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1
-            })
-            .on("change", function () {
-                to.datepicker("option", "minDate", getDate(this));
-            }),
-        to = $("#to").datepicker({
+    var dateFormat = "yymmdd",
+// DO NOT CHANGE THIS FORMAT, this value corresponds to rowkey within azure table
+    from = $("#from")
+        .datepicker({
             dateFormat: 'yymmdd',
-            minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]),
-            maxDate: new Date(d.getFullYear(), d.getMonth(), d.getDate()), // same as "from"   
+            // set this to the first day when app should start
+            minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]), 
+            // set MaxDate to current day so it can't go out of bounds
+            maxDate: new Date(d.getFullYear(), d.getMonth(), d.getDate()), 
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1
         })
-            .on("change", function () {
-                from.datepicker("option", "maxDate", getDate(this));
-            });
+        .on("change", function () {
+            to.datepicker("option", "minDate", getDate(this));
+        }),
+    to = $("#to").datepicker({
+        dateFormat: 'yymmdd',
+        minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]),
+        // same as "from"
+        maxDate: new Date(d.getFullYear(), d.getMonth(), d.getDate()),
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1
+    })
+        .on("change", function () {
+            from.datepicker("option", "maxDate", getDate(this));
+        });
 
     function getDate(element) {
         var date;
@@ -56,10 +59,12 @@ function startDatePicker() {
         }
         return date;
     }
-} // ^ what all this does? 
+} 
 
+// I NEED
+// API HTTP request,
+// Gets all cameras that are assosiated with pedestrian detection
 function makeCamerasRequest() {
-    // API HTTP request, Gets all cameras that are assosiated with pedestrian detection
     // Needed with camera details
     fetch('https://pedestriandetection.azurewebsites.net/api/GetCameras', {
         headers: new Headers({
@@ -67,43 +72,44 @@ function makeCamerasRequest() {
             'GetCameras': 'camera'
         })
     })
-        .then(response => response.json())
-        .then(data => {
-            var select = document.getElementById("select");
-            //alert (data.length );
-            if ("undefined" !== typeof data && data.length && data.length > 0) {
-                for (var i = 0; i < data.length; i++) {
+    .then(response => response.json())
+    .then(data => {
+        var select = document.getElementById("select");
+        //alert (data.length );
+        if ("undefined" !== typeof data && data.length && data.length > 0) {
+            for (var i = 0; i < data.length; i++) {
+                cameras[i] = data[i];
 
-                    cameras[i] = data[i];
+                var option = document.createElement("option");
+                option.appendChild(document.createTextNode(data[i].RowKey));
+                option.value = data[i].RowKey;
+                select.appendChild(option);
 
-                    var option = document.createElement("option");
-                    option.appendChild(document.createTextNode(data[i].RowKey));
-                    option.value = data[i].RowKey;
-                    select.appendChild(option);
-
-                    if (i == 0) {   // set default camera
-                        cameraID = data[i].RowKey;
-                        if (data[i].cameraStarted && 0 !== (data[i].cameraStarted).length) {
-                            setCameraStartDate(data[i].cameraStarted);
-                            startDatePicker();
-                            enableSearchBtn();
-                            enableResetBtn();
-                        }
-                        if (cameraID && 0 !== cameraID.length) {
-                            fillCameraDetailsParagraph(data[i]);
-                            makeTotalRequest();
-                        }
+                // set default camera
+                if (i == 0) {   
+                    cameraID = data[i].RowKey;
+                    if (data[i].cameraStarted && 0 !== (data[i].cameraStarted).length) {
+                        setCameraStartDate(data[i].cameraStarted);
+                        startDatePicker();
+                        enableSearchBtn();
+                        enableResetBtn();
+                    }
+                    if (cameraID && 0 !== cameraID.length) {
+                        fillCameraDetailsParagraph(data[i]);
+                        makeTotalRequest();
                     }
                 }
-                enableCameraSelect();
             }
-
-        })
-        .catch(error => alert(error))
+            enableCameraSelect();
+        }
+    })
+    .catch(error => alert(error))
 }
 
+// I NEED
+// API HTTP request, 
+// Get the data for a specific camera from a starting date to the end date
 function makeDayRangeRequest(firstValue, secondValue) {
-    // API HTTP request, Get the data for a specific camera from a starting date to the end date
     // Needed with search button logic & Day Range
     fetch('https://pedestriandetection.azurewebsites.net/api/GetDayRange', {
         headers: new Headers({
@@ -114,22 +120,24 @@ function makeDayRangeRequest(firstValue, secondValue) {
             'CameraID': cameraID
         })
     })
-        .then(response => response.json())  // TODO: check if response contains actual data, else print error statement
-        .then(data => {
-            // alert(JSON.stringify(data));
-
-            if ("undefined" !== typeof data && "undefined" !== typeof data.numberOfObjects) {
-                fillDayRangeParagraph(data);
-            }
-            else if ("undefined" !== typeof data && "undefined" !== typeof data.error) {
-                fillErrorParagraph(data);
-            }
-        })
-        .catch(error => alert(error))
+    // TODO: check if response contains actual data, else print error statement
+    .then(response => response.json())  
+    .then(data => {
+        // alert(JSON.stringify(data));
+        if ("undefined" !== typeof data && "undefined" !== typeof data.numberOfObjects) {
+            fillDayRangeParagraph(data);
+        }
+        else if ("undefined" !== typeof data && "undefined" !== typeof data.error) {
+            fillErrorParagraph(data);
+        }
+    })
+    .catch(error => alert(error))
 }
 
+// I NEED
+// API HTTP reguest, 
+// Gets the total number of passerby and processed images for a camera
 function makeTotalRequest() {
-    // API HTTP reguest, Gets the total number of passerby and processed images for a camera
     // Needed with Total paragraph
     fetch('https://pedestriandetection.azurewebsites.net/api/GetTotal', {
         headers: new Headers({
@@ -138,28 +146,33 @@ function makeTotalRequest() {
             'CameraID': cameraID
         })
     })
-        .then(response => response.json())
-        .then(data => {
-            if ("undefined" !== typeof data && "undefined" !== typeof data.numberOfObjects) {
-                if ("undefined" !== data.blobUrl) { // this actually checks string against word "undefined" within blob url, which means there is no image currently presented on backend side..
-                    document.getElementById("cameraimg").src = data.blobUrl;    // attach new image        
-                }
-                else {
-                    document.getElementById("cameraimg").src = "images/demo/960x360.gif";   // use default image if new image is not found 
-                }
-                fillTotalParagraph(data);
+    .then(response => response.json())
+    .then(data => {
+        if ("undefined" !== typeof data && "undefined" !== typeof data.numberOfObjects) {
+        // this actually checks string against word "undefined" within blob url, 
+        // which means there is no image currently presented on backend side..
+            if ("undefined" !== data.blobUrl) { 
+                // attach new image
+                document.getElementById("cameraimg").src = data.blobUrl;        
             }
-            else if ("undefined" !== typeof data && "undefined" !== typeof data.error) {
-                fillErrorParagraph(data);
+            else {
+                // use default image if new image is not found 
+                document.getElementById("cameraimg").src = "images/demo/960x360.gif";
             }
-        })
-        .catch(error => alert(error))
+            fillTotalParagraph(data);
+        }
+        else if ("undefined" !== typeof data && "undefined" !== typeof data.error) {
+            fillErrorParagraph(data);
+        }
+    })
+    .catch(error => alert(error))
 }
 function clearBox(elementID) {
     document.getElementById(elementID).innerHTML = "";
 }
 
-// -----------------------------  I NEED ------
+// I NEED
+// Fills total cathered data
 function fillTotalParagraph(data) {
 // Needed with makeTotalRequest
     var paragraph = document.getElementById("displayBar");
@@ -168,40 +181,12 @@ function fillTotalParagraph(data) {
         //JSON.stringify(data)
     );
     var pedestrians = document.createTextNode(
-        "Pedestrians: " + data.numberOfPedestrians
-    );
+        "Pedestrians: " + data.numberOfPedestrians );
     var bicyclers = document.createTextNode(
-        "Cyclists: " + data.numberOfBicyclers
-    );
+        "Cyclists: " + data.numberOfBicyclers );
     var frames = document.createTextNode(
-        "Pictures analyzed: " + data.numberOfFrames
-    );
-    // What this does? 
-    paragraph.appendChild(objects);
-    paragraph.appendChild(document.createElement("br"));
-    paragraph.appendChild(pedestrians);
-    paragraph.appendChild(document.createElement("br"));
-    paragraph.appendChild(bicyclers);
-    paragraph.appendChild(document.createElement("br"));
-    paragraph.appendChild(frames);
-    paragraph.appendChild(document.createElement("br"));
-} // --------------------------------------------------
-
-// What this does? 
-function fillDayRangeParagraph(data) {
-    var paragraph = document.getElementById("displayBar");
-    var objects = document.createTextNode(
-        "Total number of passerby: " + data.numberOfObjects
-    );
-    var pedestrians = document.createTextNode(
-        "Pedestrians: " + data.numberOfPedestrians
-    );
-    var bicyclers = document.createTextNode(
-        "Cyclists: " + data.numberOfBicyclers
-    );
-    var frames = document.createTextNode(
-        "Pictures analyzed: " + data.numberOfFrames
-    );
+        "Pictures analyzed: " + data.numberOfFrames );
+    // Creates br elements between data
     paragraph.appendChild(objects);
     paragraph.appendChild(document.createElement("br"));
     paragraph.appendChild(pedestrians);
@@ -211,46 +196,63 @@ function fillDayRangeParagraph(data) {
     paragraph.appendChild(frames);
     paragraph.appendChild(document.createElement("br"));
 }
-// What this does? 
-function fillErrorParagraph(data) {
 
+// I NEED
+// Fills wanted day range data
+function fillDayRangeParagraph(data) {
+    var paragraph = document.getElementById("displayBar");
+    var objects = document.createTextNode(
+        "Total number of passerby: " + data.numberOfObjects );
+    var pedestrians = document.createTextNode(
+        "Pedestrians: " + data.numberOfPedestrians );
+    var bicyclers = document.createTextNode(
+        "Cyclists: " + data.numberOfBicyclers );
+    var frames = document.createTextNode(
+        "Pictures analyzed: " + data.numberOfFrames);
+    // Creates br elements between data
+    paragraph.appendChild(objects);
+    paragraph.appendChild(document.createElement("br"));
+    paragraph.appendChild(pedestrians);
+    paragraph.appendChild(document.createElement("br"));
+    paragraph.appendChild(bicyclers);
+    paragraph.appendChild(document.createElement("br"));
+    paragraph.appendChild(frames);
+    paragraph.appendChild(document.createElement("br"));
+}
+// What this does? Maybe some error thingy
+function fillErrorParagraph(data) {
     var paragraph = document.getElementById("displayBar");
     var error = document.createTextNode(
         "Response: " + data.error
-        //JSON.stringify(data)
+        //JSON.stringify(data) 
     );
     paragraph.appendChild(error);
     paragraph.appendChild(document.createElement("br"));
 }
 
-// ------------------------ I NEED ---
+// I NEED
+// Fills wanted camera details
 function fillCameraDetailsParagraph(data) {
-
     var paragraph = document.getElementById("displayDetails");
     var cameraLocation = document.createTextNode(
-        "Location: " + data.cameraLocation
-    );
+        "Location: " + data.cameraLocation );
     var cameraCity = document.createTextNode(
-        "City: " + data.cameraCity
-    );
+        "City: " + data.cameraCity );
     var cameraName = document.createTextNode(
-        "Name: " + data.cameraName
-    );
+        "Name: " + data.cameraName );
     var cameraEnabled = document.createTextNode(
-        "Camera is enabled: " + data.isEnabled
-    );
-    //What it this again??
+        "Camera is enabled: " + data.isEnabled );
+    // Creates br elements between data
     paragraph.appendChild(cameraCity);
     paragraph.appendChild(document.createElement("br"));
     paragraph.appendChild(cameraLocation);
     paragraph.appendChild(document.createElement("br"));
     paragraph.appendChild(cameraEnabled);
     paragraph.appendChild(document.createElement("br"));
-} // ------------------------------------------------
+}
 
-// What this does? 
+// MAYBE NEED - Not sure what this does
 function setCameraStartDate(datestring) {
-
     var splitYearAndMonth = datestring.match(/.{1,4}/g);
     var splitMonthAndDay = splitYearAndMonth[1].match(/.{1,2}/g);
     cameraStartedDate = new Array();
@@ -259,10 +261,9 @@ function setCameraStartDate(datestring) {
     cameraStartedDate.push(parseInt(splitMonthAndDay[1]));
 }
 
-// ---------------------------------- I MAYBE NEED?? -----------------
+// MAYBE NEED - Not sure what does
+// Switch cameras with select onchange
 function enableCameraSelect() {
-
-    // switch cameras with select onchange
     document.getElementById("select").onchange = function () {
         cameraID = this.value;
         if ("undefined" !== cameraID && 0 !== cameraID.length) {
@@ -282,12 +283,12 @@ function enableCameraSelect() {
             }
         }
     };
-} // -----------------------------------------------------------------------
+}
 
-// ------------------------------ I NEEED -----------
+// DONT NEED
+// Search button logic
 function enableSearchBtn() {
-
-    // search button logic, both 'from' and 'to' values must be presented
+    // both 'from' and 'to' values must be presented
     var searchBtn = document.getElementById('searchBtn');
     searchBtn.addEventListener('click', function () {
         var toValue = document.getElementById('to').value;
@@ -300,9 +301,8 @@ function enableSearchBtn() {
         }
     }, false);
 }
-
+// reset button logic
 function enableResetBtn() {
-    // reset button logic
     var resetBtn = document.getElementById('resetBtn');
     resetBtn.addEventListener('click', function () {
         resetCameraData();
@@ -314,4 +314,4 @@ function resetCameraData() {
     document.getElementById('from').value = "";
     makeTotalRequest();
     startDatePicker();
-} // --------------------------------------------------------
+}

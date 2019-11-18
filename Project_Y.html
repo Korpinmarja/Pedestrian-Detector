@@ -12,18 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Calender stuff -->
-    <link rel="stylesheet" href="calendar/pignose.calendar.css"> 
+    <link rel="stylesheet" href="calendar/pignose.calendar.css">
     <script src="calendar/pignose.calendar.full.js"></script>
-    <!-- TODO Styles to css file-->
 </head>
 
 <body style="background-color:lightgray">
-    <!-- Backround color doesn't work in CSS ?? -->
-
+    <!-- Backround color doesn't work in CSS, dunno why -->
     <!-- Project selector navbar -->
-    <!-- TODO Make this the "project selector" + 
-        highlight/underline the selected tab +
-        Repair the "hamburger button -->
     <nav class="navbar navbar-expand-sm navbar-custom">
         <!-- Makes "hamburger" button for smaller screens -->
         <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -31,87 +26,70 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="PedestrianDetector.html">Pedestrian detector</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Project_X.html">Project X Analyzer</a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Pedestrian detector</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Project X Analyzer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Project Y</a>
+                    <a class="nav-link" href="Project_Y.html">Project Y</a>
                 </li>
             </ul>
         </div>
     </nav>
     <br />
     <!-- Title -->
-    <!-- TODO Right title with right project -->
     <div class="projectheader">
-        <h2>Pedestrian detector</h2>
+        <h2>Project Y</h2>
     </div>
 
     <div class="walls">
-        <!-- TODO research how to "center" the whole website -->
+
         <!-- Picture -->
         <div class="row">
-            <div class="col-lg-2">
-            </div>
-            <!-- TODO Picture goes here, check if colum is right size -->
+            <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <div class="row image-text">
                     <h5>Image</h5>
                 </div>
-                <div class="row">
-                    <br />
-                    <br />
-                </div>
+                <div class="row"></div>
+                <br />
+                <br />
                 <div class="row">
                     <a href="#"><img src="images/demopic.jpg" alt="" id="cameraimg" class="img-fluid d-block"></a>
                 </div>
             </div>
-            <div class="col-lg-2">
-            </div>
+            <div class="col-lg-2"></div>
         </div>
         <br />
         <div class="container">
             <div class="row">
-                <!-- Camera selector -->
-                <!-- TODO check how to get this button nicely beside the title -->
-                <!-- TODO dropdown button for cameras + how to transform this to hamburger -->
-                <!---->
-                <div class="col-lg-1">
-                </div>
-                <!-- Camera info -->
+                <div class="col-lg-1"></div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <!---->
-                        <h5> Camera info </h5>
+                        <h5> Infobox with dropdown </h5>
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            Select camera
+                            Select
                         </button>
-                        <!-- TODO Give ID to this and fetch the info from script codes-->
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Link 1</a>
                             <a class="dropdown-item" href="#">Link 2</a>
                             <a class="dropdown-item" href="#">Link 3</a>
                         </div>
-                    </div><!---->
+                    </div>
                     <div class="row">
-                        <!---->
                         <div class="infobox">
                             Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
                             non pulvinar lorem felis pretium, metus venenatis dictum viverra,
                             dui metus finibus enim, ac rhoncus sem lorem vitae mauris
                         </div>
-                    </div><!---->
+                    </div>
                 </div>
-
-                <!-- Cathered data all time -->
-                <!-- TODO Give ID to this and fetch the information from script codes -->
                 <div class="col-lg-2"></div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <h5>Cathered data (all time)</h5>
+                        <h5>Infobox</h5>
                     </div>
                     <div class="infobox row">
                         Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui,
@@ -128,40 +106,53 @@
         </div>
         <div class="row">
             <div class="col-lg-1"></div>
-            <!-- Calendar -->
-            <!-- TODO How to get days out off calendar, so getAPI will got the info -->
-            <div class="col-xl-4">
-                <div class="row calendar">
-                    <script src="calendar/calendar.js"></script>
-                </div>
-            </div>
-            <!-- Cathered data selected days -->
-            <!-- TODO Give ID to this and fetch the information from script codes -->
             <div class="col-xl-3 row">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     <div class="row">
-                        <h5>Cathered data (selected days)</h5>
+                        <h5>Infobox</h5>
                     </div>
                     <div class="infobox row">
-                        Fake Image lorem ipsum nulla ut commodo 
+                        Fake Image lorem ipsum nulla ut commodo
                         sagittis, sapien dui mattis dui,
-                        non pulvinar lorem felis pretium, 
+                        non pulvinar lorem felis pretium,
                         metus venenatis dictum viverra,
                         dui metus finibus enim, ac rhoncus se
                     </div>
                 </div>
-                <!-- Space between data and chart -->
                 <div class="col-lg-1"></div>
             </div>
-            <div class="col-xl-3">
-                <div class="row">
-                    <div class="col-lg-1"></div>
-                        <div class="col-lg-10">
-                            Tähän tulee se taulukko jossa näkyy erilaisia kuvioita
-                        </div>
-                    <div class="col-lg-1"></div>
+            <div class="col-xl-3 row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <h5>Infobox</h5>
+                    </div>
+                    <div class="infobox row">
+                        Fake Image lorem ipsum nulla ut commodo
+                        sagittis, sapien dui mattis dui,
+                        non pulvinar lorem felis pretium,
+                        metus venenatis dictum viverra,
+                        dui metus finibus enim, ac rhoncus se
+                    </div>
                 </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="col-xl-3 row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <h5>Infobox</h5>
+                    </div>
+                    <div class="infobox row">
+                        Fake Image lorem ipsum nulla ut commodo
+                        sagittis, sapien dui mattis dui,
+                        non pulvinar lorem felis pretium,
+                        metus venenatis dictum viverra,
+                        dui metus finibus enim, ac rhoncus se
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
             </div>
             <div class="col-lg-1"></div>
         </div>
@@ -175,7 +166,6 @@
             <!-- Grid column -->
             <div class="col-md-12 flex-center text-center">
                 <!-- Introduction -->
-                <!-- TODO Ask for the introduction text -->
                 <!-- TODO Right introduction with right project -->
                 <h5>Info about the project</h5>
                 <div>
@@ -188,13 +178,11 @@
         <br />
         <!-- Footer Text -->
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3" style="background-color:aquamarine">
-            © 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+        <div class="footer-copyright text-center py-3">
+            LAMK AI Team © 2019 - All Rights Reserved - Hosted with
+            <a href="#"> Azure Storage </a>
         </div>
-        <!-- Copyright -->
     </footer>
-    <!-- Footer -->
 
 </body>
 </html>
