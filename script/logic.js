@@ -1,13 +1,18 @@
+
 var cameraID = "";
 var cameras = new Array();
 var cameraStartedDate;
+var dates;
 
 $(document).ready(function () {
 // this should display the list of cameras
+    //kutsutaan PALJON alempana olevaa funktiota
     makeCamerasRequest();
 });
 
 // call it when camera list is available
+//Tämä funktio etsii ensimmäisen mahdollisen päivän. Koita saada tämä kalenterin ensimmäiseksi mahdolliseksi
+//päivä vauhtoehdoksi
 function startDatePicker() {
     var d = new Date();
     // check that state exists
@@ -23,20 +28,23 @@ function startDatePicker() {
 
     var dateFormat = "yymmdd",
 // DO NOT CHANGE THIS FORMAT, this value corresponds to rowkey within azure table
+    //from funktion arvoksi/datepickerin arvoksi pitää saada kalenterin Date[0]
     from = $("#from")
         .datepicker({
             dateFormat: 'yymmdd',
             // set this to the first day when app should start
+            //Tee samanlainen min date kuten tässä tehtynä, koska alhaalla koodissa on määritetty kameran käynnistys arvon mukaan 
             minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]), 
             // set MaxDate to current day so it can't go out of bounds
             maxDate: new Date(d.getFullYear(), d.getMonth(), d.getDate()), 
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1
-        })
+        })//Tämän jälkeen funktio antaa optionille valitun päivän(getDate funktio löytyy vähän alempaa[laittaa datepickerin arvot dateen])
         .on("change", function () {
             to.datepicker("option", "minDate", getDate(this));
-        }),
+            }),
+    //sama juttu ku ylemmässä mutta date[1]
     to = $("#to").datepicker({
         dateFormat: 'yymmdd',
         minDate: new Date(cameraStartedDate[0], cameraStartedDate[1] - 1, cameraStartedDate[2]),
@@ -45,11 +53,11 @@ function startDatePicker() {
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 1
-    })
+    })//katso ylemmästä
         .on("change", function () {
             from.datepicker("option", "maxDate", getDate(this));
         });
-
+    //getDate saa täällä arvon minkä se antaa optionille, joka määritellään datepickerin arvojen mukaan
     function getDate(element) {
         var date;
         try {
@@ -73,13 +81,14 @@ function makeCamerasRequest() {
         })
     })
     .then(response => response.json())
-    .then(data => {
+        .then(data => {
+        //minkä sisään haluat camerat
         var select = document.getElementById("select");
         //alert (data.length );
         if ("undefined" !== typeof data && data.length && data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 cameras[i] = data[i];
-
+                //googlaa document.element ja/tai appendchild lisätietoja varten ja rowkey
                 var option = document.createElement("option");
                 option.appendChild(document.createTextNode(data[i].RowKey));
                 option.value = data[i].RowKey;
@@ -232,6 +241,7 @@ function fillErrorParagraph(data) {
 
 // I NEED
 // Fills wanted camera details
+//document.getElementByID("location").textNode = "Location: " + data.cameralocation;
 function fillCameraDetailsParagraph(data) {
     var paragraph = document.getElementById("displayDetails");
     var cameraLocation = document.createTextNode(
@@ -251,7 +261,8 @@ function fillCameraDetailsParagraph(data) {
     paragraph.appendChild(document.createElement("br"));
 }
 
-// MAYBE NEED - Not sure what this does
+// NEED Ottaa kameran päällä laitto päivän ja muuttaa sen muotoon jossa kalenteri ymmärtää sen
+// Tämä laitetaan kameran aikaisimmaksi StartDateksi
 function setCameraStartDate(datestring) {
     var splitYearAndMonth = datestring.match(/.{1,4}/g);
     var splitMonthAndDay = splitYearAndMonth[1].match(/.{1,2}/g);
@@ -261,7 +272,8 @@ function setCameraStartDate(datestring) {
     cameraStartedDate.push(parseInt(splitMonthAndDay[1]));
 }
 
-// MAYBE NEED - Not sure what does
+// NEED - Kun uusi kamera on valittu, tullaan tänne tekemään funktio
+// täytetään kameran tiedot niiden paikkoihin htmlssä. Ylempänä itse fillaus "fillcameradetailsparagraph"
 // Switch cameras with select onchange
 function enableCameraSelect() {
     document.getElementById("select").onchange = function () {
