@@ -5,7 +5,7 @@
      // sets that user can't select future days
         maxDate: moment(), 
      // sets earlies day user can select
-        minDate: '2019-10-12', 
+     // minDate: startDatePicker(),  // voinko jotenkin vaan saada t‰h‰n arvon jonka startDatePicker tekee? Rikkoo n‰in kalenterin
      // enables the range selection
         multiple: true, 
         format: 'YY-MM-DD',
@@ -13,6 +13,7 @@
         theme: 'custom',
      // first day of the week, 0 = sunday - 6 = saturday
         week: 1, 
+
      // Prints the selected days to the console
         select: function (date, context) {
             var $this = $(this);
@@ -21,9 +22,9 @@
             //function daterangerequest(startdate, enddate) {
                 //t‰h‰n tulee funktio joka valittujen p‰ivien sis‰ll‰ ottaa dataa
             //};
-            //Saattaa olla ettei toimi, kutsu funktiota normaalisti ja syˆt‰ sille arvot
+            //Saattaa olla ettei toimi, kutsutaan funktio normaalisti ja syˆt‰ arvot
             //daterangerequest(startDate,endDate);
-            //makeDayRangeRequest funktiokutsu pit‰‰ lis‰t‰ t‰h‰n jotta kamera tiet‰‰ halutut p‰iv‰t ja antaa informaation sen mukaan.
+            //makeDayRangeRequest funktiokutsu pit‰‰ lis‰t‰ t‰h‰n jotta kamera tiet‰‰ halutut p‰iv‰t ja antaa informaation sen mukaan
         },
 
 
@@ -68,9 +69,13 @@
         controls: {
             ok: 'OK',
             cancel: 'Peruuta'
-        }
-        //make total request funktio kutsu t‰h‰n kohtaan, jotta koko kalenteri on varmasti ladannut
-        //printataan johonkin elementtiin sivustolla
-        //k‰ytet‰‰n appendChildia ett‰ saadaan data toivottuihin kohtiin
+        },
+
+        // Toimisko t‰‰ vaan n‰in? Rikkoo kalenterin atm
+        // makeTotalRequest();
+
+        //make total request funktio vasta loppuun, jotta koko kalenteri on varmasti ladannut
+
+        // Miten teen sen ett‰ kun vaihtaa kalenterissa p‰ivi‰ niin saan oikeet infot? 
     });
 });

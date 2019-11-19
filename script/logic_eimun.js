@@ -206,8 +206,8 @@ function fillTotalParagraph(data) {
     paragraph.appendChild(document.createElement("br"));
 }
 
-// I NEED
 // Fills wanted day range data
+//document.getElementByID("location").textNode = "Location: " + data.cameralocation;
 function fillDayRangeParagraph(data) {
     var paragraph = document.getElementById("displayBar");
     var objects = document.createTextNode(
@@ -272,7 +272,7 @@ function setCameraStartDate(datestring) {
     cameraStartedDate.push(parseInt(splitMonthAndDay[1]));
 }
 
-// NEED - Kun uusi kamera on valittu, tullaan t‰nne tekem‰‰n funktio
+// NEED - Kun uusi kamera on valittu, tullaan tekem‰‰n t‰m‰ funktio
 // t‰ytet‰‰n kameran tiedot niiden paikkoihin htmlss‰. Ylemp‰n‰ itse fillaus "fillcameradetailsparagraph"
 // Switch cameras with select onchange
 function enableCameraSelect() {

@@ -62,7 +62,7 @@
                 <br />
             </div>
             <div class="row">
-                <a href="#"><img src="images/demopic.jpg" alt="" id="cameraimg" class="img-fluid d-block"></a>
+                <a href="#"><img src="images/demopic.jpg" alt="" id="cameraImage" class="img-fluid d-block"></a>
             </div>
         </div>
         <div class="col-lg-2">
@@ -86,12 +86,12 @@
 <!-- TODO Give ID to this and fetch the info from script codes-->
 <!-- TRIED Didnt work, not sure why -->
                     <div class="dropdown-menu">
-                        <select id="select"></select>
+                        <div id="select"></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="infobox">
-                        location: <p id="location"></p>
+                    <div class="infobox" id="cameraInfo">
+                        <p id=""></p>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 <div class="row">
                     <h5>Cathered data (all time)</h5>
                 </div>
-                <div class="infobox row">
+                <div class="infobox row" id="totalData">
                     <p id="displayBar"></p>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <div class="row">
                     <h5>Cathered data (selected days)</h5>
                 </div>
-                <div class="infobox row">
+                <div class="infobox row" id="selectedDaysData">
                     Fake Image lorem ipsum nulla ut commodo 
                     sagittis, sapien dui mattis dui,
                     non pulvinar lorem felis pretium, 
