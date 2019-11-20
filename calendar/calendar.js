@@ -5,7 +5,15 @@
      // sets that user can't select future days
         maxDate: moment(), 
      // sets earlies day user can select
-     // minDate: startDatePicker(),  // voinko jotenkin vaan saada t‰h‰n arvon jonka startDatePicker tekee? Rikkoo n‰in kalenterin
+
+        //min daten sis‰lle pit‰‰ tehd‰ functiokutsu, joka hakee function enableCameraSelect sis‰lt‰ valitun kameran startdaten
+        //Joka haetaan azuren kautta. Azuresta haettujen tietojen j‰lkeen kameroilta voidaan pyyt‰‰ dataa luokkaa camera[i].cameraStarted
+
+     // minDate: function(){
+     // cameraStartDate = cameranStartDate();
+     // return camestartdate;
+     // ,  // voinko jotenkin vaan saada t‰h‰n arvon jonka startDatePicker tekee? Rikkoo n‰in kalenterin
+
      // enables the range selection
         multiple: true, 
         format: 'YY-MM-DD',
@@ -18,6 +26,7 @@
         select: function (date, context) {
             var $this = $(this);
             console.log(date[0], date[1])
+            //JonnanDatePikcer(date[0], date[1])
             //return (startDate, endDate);
             //function daterangerequest(startdate, enddate) {
                 //t‰h‰n tulee funktio joka valittujen p‰ivien sis‰ll‰ ottaa dataa
@@ -72,10 +81,13 @@
         },
 
         // Toimisko t‰‰ vaan n‰in? Rikkoo kalenterin atm
-        // makeTotalRequest();
+
 
         //make total request funktio vasta loppuun, jotta koko kalenteri on varmasti ladannut
-
+        
         // Miten teen sen ett‰ kun vaihtaa kalenterissa p‰ivi‰ niin saan oikeet infot? 
-    });
+        });//T‰h‰n loppuu varsinainen KALENTERI, jonka sis‰ll‰ on pari aluetta mihin voit laittaa koodia, mm. select functio
+        
 });
+makeCamerasRequest()
+makeTotalRequest();

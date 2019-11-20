@@ -2,7 +2,7 @@
 var cameraID = "";
 var cameras = new Array();
 var cameraStartedDate;
-var dates;
+// var dates;
 
 $(document).ready(function () {
 // this should display the list of cameras
@@ -13,6 +13,7 @@ $(document).ready(function () {
 // call it when camera list is available
 //Tämä funktio etsii ensimmäisen mahdollisen päivän. Koita saada tämä kalenterin ensimmäiseksi mahdolliseksi
 //päivä vauhtoehdoksi
+
 function startDatePicker() {
     var d = new Date();
     // check that state exists
@@ -84,7 +85,7 @@ function makeCamerasRequest() {
         .then(data => {
         //minkä sisään haluat camerat
         var select = document.getElementById("select");
-        //alert (data.length );
+        alert(data.length );
         if ("undefined" !== typeof data && data.length && data.length > 0) {
             for (var i = 0; i < data.length; i++) {
                 cameras[i] = data[i];

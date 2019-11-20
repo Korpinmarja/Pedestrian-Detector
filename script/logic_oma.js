@@ -1,16 +1,29 @@
 
-
+//Api kutsut ei toimi koska t‰‰ ei oo servulla
+// T‰‰ paska tuskin toimii mitenk‰‰n p‰in, k‰yt‰ vaan apikutsuja, mutta yrit‰ rakentaa ymp‰rille asiat oikein
+//staattisia muuttujia, static
 
 // --- DAYS ---
 
 var cameraID = "";
 var cameras = new Array();
-var cameraStartedDate;
+//var cameraStartedDate;
 var dates;
 
+var cameraStartedDate = [19,10,01];
+
+/* StartDatePicker tuskin toimii, koska from on jQueryn? oma kalenteri juttu
+ * 
+ * functio JonnanDatePikcer(date1, date2)
+ * var startdate = date1;
+ * var enddate = date2;
+ * 
+ * 
+ * 
 // call it when camera list is available
 // T‰‰ funktio etsii ensimm‰isen mahdollisen p‰iv‰n
 // Miten saan t‰n funktion tiedon kalenterin ensimm‰iseksi mahdolliseksi p‰iv‰ks
+
 function startDatePicker() {
     var d = new Date();
     // check that state exists
@@ -27,6 +40,7 @@ function startDatePicker() {
     var dateFormat = "yymmdd",
         // DO NOT CHANGE THIS FORMAT, this value corresponds to rowkey within azure table
         //from funktion arvoksi/datepickerin arvoksi pit‰‰ saada kalenterin Date[0]
+        
         from = $("#from")
             .datepicker({
                 dateFormat: 'yymmdd',
@@ -66,6 +80,8 @@ function startDatePicker() {
         return date;
     }
 } 
+*
+*/
 // Ottaa kameran p‰‰llelaitto p‰iv‰n ja muuttaa sen muotoon jossa kalenteri ymm‰rt‰‰ sen
 // T‰m‰ laitetaan kameran aikaisimmaksi StartDateksi
 function setCameraStartDate(datestring) {
@@ -83,26 +99,26 @@ function setCameraStartDate(datestring) {
 // --- CAMERAS ---
 // Jotta t‰‰ toimii, niin camera request tapahtuu ns. ekana koska muuten mik‰‰n muu info ei mee l‰pi
 
-$(document).ready(function () {
+//$(document).ready(function () {
     // display the list of cameras
-    makeCamerasRequest();
-});
+    //makeCamerasRequest();
+//});
 // API HTTP request,
 // Gets all cameras that are assosiated with pedestrian detection
 function makeCamerasRequest() {
     // Needed with camera details
+    //alert("miksi");
     fetch('https://pedestriandetection.azurewebsites.net/api/GetCameras', {
         headers: new Headers({
             'Content-Type': 'application/json',
             'GetCameras': 'camera'
         })
     })
-		// EN VITTU TAJUA MITEN TƒN PASKAN PITƒIS TOIMIA CITTU SAATNAATA w<nbrkj,gsbakjgrdhg
         .then(response => response.json())
         .then(data => {
 			// this
             var select = document.getElementById("select"); // old was 'select' // cameraList
-            //alert (data.length ); <- testi juttuja
+            alert (data.length );
             if ("undefined" !== typeof data && data.length && data.length > 0) {
                 for (var i = 0; i < data.length; i++) {
                     cameras[i] = data[i];
@@ -117,7 +133,7 @@ function makeCamerasRequest() {
                         cameraID = data[i].RowKey;
                         if (data[i].cameraStarted && 0 !== (data[i].cameraStarted).length) {
                             setCameraStartDate(data[i].cameraStarted);
-                            startDatePicker();
+                            //startDatePicker();
                             enableSearchBtn();
                             enableResetBtn();
                         }
@@ -170,6 +186,7 @@ function enableCameraSelect() {
                         if (cameras[i].cameraStarted && 0 !== (cameras[i].cameraStarted).length) {
                             //alert (cameras[i].cameraStarted);
                             setCameraStartDate(cameras[i].cameraStarted);
+                            //cameranStartDate()
                             resetCameraData();
                         }
                     }
@@ -191,6 +208,7 @@ function clearBox(elementID) {
 // API HTTP reguest, 
 // Gets the total number of passerby and processed images for a camera
 function makeTotalRequest() {
+    //alert("miksi");
     // Needed with Total paragraph
     fetch('https://pedestriandetection.azurewebsites.net/api/GetTotal', {
         headers: new Headers({
@@ -201,6 +219,7 @@ function makeTotalRequest() {
     })
         .then(response => response.json())
         .then(data => {
+            alert(Date.lenght);
             if ("undefined" !== typeof data && "undefined" !== typeof data.numberOfObjects) {
                 // this actually checks string against word "undefined" within blob url, 
                 // which means there is no image currently presented on backend side..

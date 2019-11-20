@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/layout.css">
-    <script src="script/logic.js"></script>
+    <script src="script/logic_oma.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- Bootstrap things -->
@@ -81,12 +81,14 @@
                 <div class="row">
                     <h5> Camera info </h5>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        Select camera
+                        
                     </button>
 <!-- TODO Give ID to this and fetch the info from script codes-->
 <!-- TRIED Didnt work, not sure why -->
                     <div class="dropdown-menu">
-                        <div id="select"></div>
+                        <p id="cameraList">
+                            <label for="Select">Camera: </label><select id="select"></select>
+                        </p>
                     </div>
                 </div>
                 <div class="row">
