@@ -24,9 +24,9 @@
 
      // Prints the selected days to the console
         select: function (date, context) {
-            var $this = $(this);
-            console.log(date[0], date[1])
-            //JonnanDatePikcer(date[0], date[1])
+            //var $this = $(this);
+            console.log(date[0], date[1]);
+            jonnanDatePikcer(date[0], date[1]);
             //return (startDate, endDate);
             //function daterangerequest(startdate, enddate) {
                 //tähän tulee funktio joka valittujen päivien sisällä ottaa dataa

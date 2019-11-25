@@ -14,9 +14,6 @@ var cameraStartedDate = [19,10,01];
 
 /* StartDatePicker tuskin toimii, koska from on jQueryn? oma kalenteri juttu
  * 
- * functio JonnanDatePikcer(date1, date2)
- * var startdate = date1;
- * var enddate = date2;
  * 
  * 
  * 
@@ -332,3 +329,7 @@ function fillErrorParagraph(data) {
     paragraph.appendChild(document.createElement("br"));
 }
 // END OF DAY RANGE
+
+
+// P‰iv‰m‰‰r‰t kalenterista koodi
+

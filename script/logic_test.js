@@ -41,3 +41,28 @@ function makeCamerasRequest() {
         })
         .catch(error => alert(error))
 }
+function jonnanDatePikcer(date1, date2) {
+    var startdate = date1;
+    var enddate = date2;
+    var dateformat = "yymmdd";
+    if (startdate != null && enddate != null) {
+        //pyyd‰KameraltaN‰m‰P‰iv‰t(startdate.format(dateformat), enddate.format(dateformat));
+        var elementInHTML = document.getElementById("selectedDaysData");
+        elementInHTML.innerHTML = startdate.format('YYYY-MM-DD') + " to " + enddate.format('YYYY-MM-DD');
+        //elementInHTML.innerHTML += p‰ivienTiedot;
+    }
+    else {
+        var elementInHTML = document.getElementById("selectedDaysData");
+        elementInHTML.innerHTML = startdate.format('YYYY-MM-DD');
+    }
+}
+    //function pyyd‰KameraltaN‰m‰P‰iv‰t(startdate, enddate) {
+    //Apikutsu, joka antaa kameroiden tiedot n‰ilt‰ p‰ivilt‰
+    //printti‰varten(apikutsuntiedot);
+    //}
+
+    //function printti‰varten(p‰ivilt‰SaatuData){
+    //var printattavaData = p‰ivilt‰SaatuData;
+    //var elementInHTML = document.getElementById("selectedDaysData");
+    //elementInHTML.innerHTML = printattavaData;
+    //}
