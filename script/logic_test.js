@@ -1,5 +1,10 @@
+//ei toimi
+
+var cameraID = "";
+
+var cameraStartedDate = [19, 10, 01];
+
 function makeCamerasRequest() {
-    alert("miksi");
     fetch('https://pedestriandetection.azurewebsites.net/api/GetCameras', {
         headers: new Headers({
             'Content-Type': 'application/json',
@@ -23,9 +28,9 @@ function makeCamerasRequest() {
                     if (i == 0) {
                         cameraID = data[i].RowKey;
                     }
-                        /* set default camera
+                        // set default camera
                         if (data[i].cameraStarted && 0 !== (data[i].cameraStarted).length) {
-                            setCameraStartDate(data[i].cameraStarted);
+                            // setCameraStartDate(data[i].cameraStarted);
                             startDatePicker();
                             enableSearchBtn();
                             enableResetBtn();
@@ -34,13 +39,13 @@ function makeCamerasRequest() {
                             fillCameraDetailsParagraph(data[i]);
                             makeTotalRequest();
                         }
-                    }*/
+                    }
                 }
                 // enableCameraSelect();
-            }
-        })
+            })
         .catch(error => alert(error))
 }
+//toimii
 function jonnanDatePikcer(date1, date2) {
     var startdate = date1;
     var enddate = date2;
@@ -48,12 +53,12 @@ function jonnanDatePikcer(date1, date2) {
     if (startdate != null && enddate != null) {
         //pyyd‰KameraltaN‰m‰P‰iv‰t(startdate.format(dateformat), enddate.format(dateformat));
         var elementInHTML = document.getElementById("selectedDaysData");
-        elementInHTML.innerHTML = startdate.format('YYYY-MM-DD') + " to " + enddate.format('YYYY-MM-DD');
+        elementInHTML.innerHTML = startdate.format('DD.MM.YYYY') + " to " + enddate.format('DD.MM.YYYY');
         //elementInHTML.innerHTML += p‰ivienTiedot;
     }
     else {
         var elementInHTML = document.getElementById("selectedDaysData");
-        elementInHTML.innerHTML = startdate.format('YYYY-MM-DD');
+        elementInHTML.innerHTML = startdate.format('DD.MM.YYYY');
     }
 }
     //function pyyd‰KameraltaN‰m‰P‰iv‰t(startdate, enddate) {

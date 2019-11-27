@@ -1,5 +1,4 @@
 
-//Api kutsut ei toimi koska t‰‰ ei oo servulla
 // T‰‰ paska tuskin toimii mitenk‰‰n p‰in, k‰yt‰ vaan apikutsuja, mutta yrit‰ rakentaa ymp‰rille asiat oikein
 //staattisia muuttujia, static
 
@@ -12,11 +11,7 @@ var dates;
 
 var cameraStartedDate = [19,10,01];
 
-/* StartDatePicker tuskin toimii, koska from on jQueryn? oma kalenteri juttu
- * 
- * 
- * 
- * 
+// StartDatePicker tuskin toimii, koska from on jQueryn? oma kalenteri juttu
 // call it when camera list is available
 // T‰‰ funktio etsii ensimm‰isen mahdollisen p‰iv‰n
 // Miten saan t‰n funktion tiedon kalenterin ensimm‰iseksi mahdolliseksi p‰iv‰ks
@@ -77,8 +72,7 @@ function startDatePicker() {
         return date;
     }
 } 
-*
-*/
+
 // Ottaa kameran p‰‰llelaitto p‰iv‰n ja muuttaa sen muotoon jossa kalenteri ymm‰rt‰‰ sen
 // T‰m‰ laitetaan kameran aikaisimmaksi StartDateksi
 function setCameraStartDate(datestring) {
