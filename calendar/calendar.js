@@ -12,7 +12,8 @@
      // minDate: function(){
      // cameraStartDate = cameranStartDate();
      // return camestartdate;
-     // ,  // voinko jotenkin vaan saada t‰h‰n arvon jonka startDatePicker tekee? Rikkoo n‰in kalenterin
+     // ,  
+     // voinko jotenkin vaan saada t‰h‰n arvon jonka startDatePicker tekee? Rikkoo n‰in kalenterin
 
      // enables the range selection
         multiple: true, 
@@ -81,13 +82,10 @@
         },
 
         // Toimisko t‰‰ vaan n‰in? Rikkoo kalenterin atm
-
-
         //make total request funktio vasta loppuun, jotta koko kalenteri on varmasti ladannut
-        
         // Miten teen sen ett‰ kun vaihtaa kalenterissa p‰ivi‰ niin saan oikeet infot? 
         });//T‰h‰n loppuu varsinainen KALENTERI, jonka sis‰ll‰ on pari aluetta mihin voit laittaa koodia, mm. select functio
         
 });
-makeCamerasRequest()
-makeTotalRequest();
+//makeCamerasRequest()
+//makeTotalRequest();

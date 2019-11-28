@@ -124,7 +124,7 @@ function makeCamerasRequest() {
                         cameraID = data[i].RowKey;
                         if (data[i].cameraStarted && 0 !== (data[i].cameraStarted).length) {
                             setCameraStartDate(data[i].cameraStarted);
-                            //startDatePicker();
+                            startDatePicker();
                             enableSearchBtn();
                             enableResetBtn();
                         }
